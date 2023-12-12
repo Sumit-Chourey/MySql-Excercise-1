@@ -1,0 +1,683 @@
+mysql> CREATE TABLE emp (
+    ->   empno decimal(4,0) NOT NULL,
+    ->   ename varchar(10) default NULL,
+    ->   job varchar(9) default NULL,
+    ->   mgr decimal(4,0) default NULL,
+    ->   hiredate date default NULL,
+    ->   sal decimal(7,2) default NULL,
+    ->   comm decimal(7,2) default NULL,
+    ->   deptno decimal(2,0) default NULL
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO emp VALUES ('7369','SMITH','CLERK','7902','1980-12-17','800.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7499','ALLEN','SALESMAN','7698','1981-02-20','1600.00','300.00','30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7521','WARD','SALESMAN','7698','1981-02-22','1250.00','500.00','30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7566','JONES','MANAGER','7839','1981-04-02','2975.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7654','MARTIN','SALESMAN','7698','1981-09-28','1250.00','1400.00','30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7698','BLAKE','MANAGER','7839','1981-05-01','2850.00',NULL,'30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7782','CLARK','MANAGER','7839','1981-06-09','2450.00',NULL,'10');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7788','SCOTT','ANALYST','7566','1982-12-09','3000.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7839','KING','PRESIDENT',NULL,'1981-11-17','5000.00',NULL,'10');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7844','TURNER','SALESMAN','7698','1981-09-08','1500.00','0.00','30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7876','ADAMS','CLERK','7788','1983-01-12','1100.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7900','JAMES','CLERK','7698','1981-12-03','950.00',NULL,'30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7902','FORD','ANALYST','7566','1981-12-03','3000.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7934','MILLER','CLERK','7782','1982-01-23','1300.00',NULL,'10');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select distinct  ascii ('z') from emp;
++-------------+
+| ascii ('z') |
++-------------+
+|         122 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii ('z') from dual;
++-------------+
+| ascii ('z') |
++-------------+
+|         122 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select substr('new mumbai' ,1 ,3) from dual;
++----------------------------+
+| substr('new mumbai' ,1 ,3) |
++----------------------------+
+| new                        |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select 3*12 from dual;
++------+
+| 3*12 |
++------+
+|   36 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select 'Welcome  to YCP ' "Message" from dual;
++-------------------------+
+| Welcome  to YCP         |
++-------------------------+
+| Welcome  to YCP Message |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select char(65) from dual;
++--------------------+
+| char(65)           |
++--------------------+
+|                |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select char(65 using utf8) from dual;
++---------------------+
+| char(65 using utf8) |
++---------------------+
+| A                   |
++---------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select * from where soundex(ename)=soundex('Aroon');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where soundex(ename)=soundex('Aroon')' at line 1
+mysql> select * from emp where soundex(ename)=soundex('Aroon');
+Empty set (0.00 sec)
+
+mysql> select * from emp where soundex(ename)=soundex('Black');
++-------+-------+---------+------+------------+---------+------+--------+
+| empno | ename | job     | mgr  | hiredate   | sal     | comm | deptno |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7698 | BLAKE | MANAGER | 7839 | 1981-05-01 | 2850.00 | NULL |     30 |
++-------+-------+---------+------+------------+---------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where soundex(ename)=soundex('Meeler');
++-------+--------+-------+------+------------+---------+------+--------+
+| empno | ename  | job   | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select round(salary) from emp;
+ERROR 1054 (42S22): Unknown column 'salary' in 'field list'
+mysql> select round(sal) from emp;
++------------+
+| round(sal) |
++------------+
+|        800 |
+|       1600 |
+|       1250 |
+|       2975 |
+|       1250 |
+|       2850 |
+|       2450 |
+|       3000 |
+|       5000 |
+|       1500 |
+|       1100 |
+|        950 |
+|       3000 |
+|       1300 |
++------------+
+14 rows in set (0.00 sec)
+
+mysql> select round(sal,) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') from emp' at line 1
+mysql> select round(sal,1) from emp;
++--------------+
+| round(sal,1) |
++--------------+
+|        800.0 |
+|       1600.0 |
+|       1250.0 |
+|       2975.0 |
+|       1250.0 |
+|       2850.0 |
+|       2450.0 |
+|       3000.0 |
+|       5000.0 |
+|       1500.0 |
+|       1100.0 |
+|        950.0 |
+|       3000.0 |
+|       1300.0 |
++--------------+
+14 rows in set (0.00 sec)
+
+mysql> select round(sal,-2) from emp;
++---------------+
+| round(sal,-2) |
++---------------+
+|           800 |
+|          1600 |
+|          1300 |
+|          3000 |
+|          1300 |
+|          2900 |
+|          2500 |
+|          3000 |
+|          5000 |
+|          1500 |
+|          1100 |
+|          1000 |
+|          3000 |
+|          1300 |
++---------------+
+14 rows in set (0.00 sec)
+
+mysql> select round(sal,2) from emp;
++--------------+
+| round(sal,2) |
++--------------+
+|       800.00 |
+|      1600.00 |
+|      1250.00 |
+|      2975.00 |
+|      1250.00 |
+|      2850.00 |
+|      2450.00 |
+|      3000.00 |
+|      5000.00 |
+|      1500.00 |
+|      1100.00 |
+|       950.00 |
+|      3000.00 |
+|      1300.00 |
++--------------+
+14 rows in set (0.00 sec)
+
+mysql> select round(sal,-3) from emp;
++---------------+
+| round(sal,-3) |
++---------------+
+|          1000 |
+|          2000 |
+|          1000 |
+|          3000 |
+|          1000 |
+|          3000 |
+|          2000 |
+|          3000 |
+|          5000 |
+|          2000 |
+|          1000 |
+|          1000 |
+|          3000 |
+|          1000 |
++---------------+
+14 rows in set (0.00 sec)
+
+mysql> select round(sal,-4) from emp;
++---------------+
+| round(sal,-4) |
++---------------+
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|         10000 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
++---------------+
+14 rows in set (0.00 sec)
+
+mysql> select truncate(sal,1) from emp;
++-----------------+
+| truncate(sal,1) |
++-----------------+
+|           800.0 |
+|          1600.0 |
+|          1250.0 |
+|          2975.0 |
+|          1250.0 |
+|          2850.0 |
+|          2450.0 |
+|          3000.0 |
+|          5000.0 |
+|          1500.0 |
+|          1100.0 |
+|           950.0 |
+|          3000.0 |
+|          1300.0 |
++-----------------+
+14 rows in set (0.00 sec)
+
+mysql> select truncate(sal,2) from emp;
++-----------------+
+| truncate(sal,2) |
++-----------------+
+|          800.00 |
+|         1600.00 |
+|         1250.00 |
+|         2975.00 |
+|         1250.00 |
+|         2850.00 |
+|         2450.00 |
+|         3000.00 |
+|         5000.00 |
+|         1500.00 |
+|         1100.00 |
+|          950.00 |
+|         3000.00 |
+|         1300.00 |
++-----------------+
+14 rows in set (0.00 sec)
+
+mysql> select truncate(sal,-2) from emp;
++------------------+
+| truncate(sal,-2) |
++------------------+
+|              800 |
+|             1600 |
+|             1200 |
+|             2900 |
+|             1200 |
+|             2800 |
+|             2400 |
+|             3000 |
+|             5000 |
+|             1500 |
+|             1100 |
+|              900 |
+|             3000 |
+|             1300 |
++------------------+
+14 rows in set (0.00 sec)
+
+mysql> select ceil(sal) from emp;
++-----------+
+| ceil(sal) |
++-----------+
+|       800 |
+|      1600 |
+|      1250 |
+|      2975 |
+|      1250 |
+|      2850 |
+|      2450 |
+|      3000 |
+|      5000 |
+|      1500 |
+|      1100 |
+|       950 |
+|      3000 |
+|      1300 |
++-----------+
+14 rows in set (0.00 sec)
+
+mysql> select floor(sal) from emp;
++------------+
+| floor(sal) |
++------------+
+|        800 |
+|       1600 |
+|       1250 |
+|       2975 |
+|       1250 |
+|       2850 |
+|       2450 |
+|       3000 |
+|       5000 |
+|       1500 |
+|       1100 |
+|        950 |
+|       3000 |
+|       1300 |
++------------+
+14 rows in set (0.00 sec)
+
+mysql> select truncate(3.6,0) ,floor(3.6), truncate(-3.6,0), floor(-3.6) from dual;
++-----------------+------------+------------------+-------------+
+| truncate(3.6,0) | floor(3.6) | truncate(-3.6,0) | floor(-3.6) |
++-----------------+------------+------------------+-------------+
+|               3 |          3 |               -3 |          -4 |
++-----------------+------------+------------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select sign(-15) from dual;
++-----------+
+| sign(-15) |
++-----------+
+|        -1 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select sign(25) from dual;
++----------+
+| sign(25) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sign(0) from dual;
++---------+
+| sign(0) |
++---------+
+|       0 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select mod(9,5) from dual;
++----------+
+| mod(9,5) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select mod(8.22,2.2) from dual;
++---------------+
+| mod(8.22,2.2) |
++---------------+
+|          1.62 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(81) from dual;
++----------+
+| sqrt(81) |
++----------+
+|        9 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select power(10,3) from dual;
++-------------+
+| power(10,3) |
++-------------+
+|        1000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select power(10,1/3) from dual;
++-------------------+
+| power(10,1/3)     |
++-------------------+
+| 2.154434688378294 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select abs(-10) from dual;
++----------+
+| abs(-10) |
++----------+
+|       10 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate() from dual;
++---------------------+
+| sysdate()           |
++---------------------+
+| 2022-11-24 18:38:08 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now() from dual;
++---------------------+
+| now()               |
++---------------------+
+| 2022-11-24 18:39:49 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate(),now(),sleep(10), now() from dual;
++---------------------+---------------------+-----------+---------------------+
+| sysdate()           | now()               | sleep(10) | now()               |
++---------------------+---------------------+-----------+---------------------+
+| 2022-11-24 18:42:56 | 2022-11-24 18:42:56 |         0 | 2022-11-24 18:42:56 |
++---------------------+---------------------+-----------+---------------------+
+1 row in set (10.01 sec)
+
+mysql> select sysdate(),now(),sleep(10),sysdate(), now() from dual;
++---------------------+---------------------+-----------+---------------------+---------------------+
+| sysdate()           | now()               | sleep(10) | sysdate()           | now()               |
++---------------------+---------------------+-----------+---------------------+---------------------+
+| 2022-11-24 18:43:42 | 2022-11-24 18:43:42 |         0 | 2022-11-24 18:43:52 | 2022-11-24 18:43:42 |
++---------------------+---------------------+-----------+---------------------+---------------------+
+1 row in set (10.01 sec)
+
+mysql> select adddate(sysdate(),2) from dual;
++----------------------+
+| adddate(sysdate(),2) |
++----------------------+
+| 2022-11-26 18:47:57  |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(sysdate(),1) from dual;
++----------------------+
+| adddate(sysdate(),1) |
++----------------------+
+| 2022-11-25 18:48:11  |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(sysdate(),10) from dual;
++-----------------------+
+| adddate(sysdate(),10) |
++-----------------------+
+| 2022-12-04 18:48:17   |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(sysdate(),-5) from dual;
++-----------------------+
+| adddate(sysdate(),-5) |
++-----------------------+
+| 2022-11-19 18:49:17   |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select datediff(sysdate(),hiredate) from dual;
+ERROR 1054 (42S22): Unknown column 'hiredate' in 'field list'
+mysql> select datediff(sysdate(),hiredate) from emp;
++------------------------------+
+| datediff(sysdate(),hiredate) |
++------------------------------+
+|                        15317 |
+|                        15252 |
+|                        15250 |
+|                        15211 |
+|                        15032 |
+|                        15182 |
+|                        15143 |
+|                        14595 |
+|                        14982 |
+|                        15052 |
+|                        14561 |
+|                        14966 |
+|                        14966 |
+|                        14915 |
++------------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select date_add(hiredate,interval 2 month) from emp;
++-------------------------------------+
+| date_add(hiredate,interval 2 month) |
++-------------------------------------+
+| 1981-02-17                          |
+| 1981-04-20                          |
+| 1981-04-22                          |
+| 1981-06-02                          |
+| 1981-11-28                          |
+| 1981-07-01                          |
+| 1981-08-09                          |
+| 1983-02-09                          |
+| 1982-01-17                          |
+| 1981-11-08                          |
+| 1983-03-12                          |
+| 1982-02-03                          |
+| 1982-02-03                          |
+| 1982-03-23                          |
++-------------------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select date_add(hiredate,interval -2 month) from emp;
++--------------------------------------+
+| date_add(hiredate,interval -2 month) |
++--------------------------------------+
+| 1980-10-17                           |
+| 1980-12-20                           |
+| 1980-12-22                           |
+| 1981-02-02                           |
+| 1981-07-28                           |
+| 1981-03-01                           |
+| 1981-04-09                           |
+| 1982-10-09                           |
+| 1981-09-17                           |
+| 1981-07-08                           |
+| 1982-11-12                           |
+| 1981-10-03                           |
+| 1981-10-03                           |
+| 1981-11-23                           |
++--------------------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select date_add(hiredate,interval 1 year) from emp;
++------------------------------------+
+| date_add(hiredate,interval 1 year) |
++------------------------------------+
+| 1981-12-17                         |
+| 1982-02-20                         |
+| 1982-02-22                         |
+| 1982-04-02                         |
+| 1982-09-28                         |
+| 1982-05-01                         |
+| 1982-06-09                         |
+| 1983-12-09                         |
+| 1982-11-17                         |
+| 1982-09-08                         |
+| 1984-01-12                         |
+| 1982-12-03                         |
+| 1982-12-03                         |
+| 1983-01-23                         |
++------------------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select last_day(hiredate) from emp;
++--------------------+
+| last_day(hiredate) |
++--------------------+
+| 1980-12-31         |
+| 1981-02-28         |
+| 1981-02-28         |
+| 1981-04-30         |
+| 1981-09-30         |
+| 1981-05-31         |
+| 1981-06-30         |
+| 1982-12-31         |
+| 1981-11-30         |
+| 1981-09-30         |
+| 1983-01-31         |
+| 1981-12-31         |
+| 1981-12-31         |
+| 1982-01-31         |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> select last_day(hiredate) from dual;
+ERROR 1054 (42S22): Unknown column 'hiredate' in 'field list'
+mysql>  from dual;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from dual' at line 1
+mysql> select upper(dayname(sysdate())) from dual;
++---------------------------+
+| upper(dayname(sysdate())) |
++---------------------------+
+| THURSDAY                  |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select lower(dayname(sysdate())) from dual;
++---------------------------+
+| lower(dayname(sysdate())) |
++---------------------------+
+| thursday                  |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select lower() from dual;
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'lower'
+mysql> select addtime('2022-05-04 11:00:00:000000','1') from dual;
++-------------------------------------------+
+| addtime('2022-05-04 11:00:00:000000','1') |
++-------------------------------------------+
+| 2022-05-04 11:00:01                       |
++-------------------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select addtime('2022-05-04 11:00:00',01;30:45') from dual;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+    '> select addtime('2022-05-04 11:00:00','01;30:45') from dual;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '30:45') from dual;
+select addtime('2022-05-04 11:00:00','01' at line 1
+    '> quit;
+    '> quit;
+    '> quit;
+    '> 
+    '> 
+    '> select addtime('2022-05-04 11:00:00:000000','1') from dual;
+    '> exit;
+    '> //
+    '> Terminal close -- exit!

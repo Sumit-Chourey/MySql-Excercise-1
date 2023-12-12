@@ -1,0 +1,473 @@
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select sal+comm from emp;
++----------+
+| sal+comm |
++----------+
+|     NULL |
+|  1900.00 |
+|  1750.00 |
+|     NULL |
+|  2650.00 |
+|     NULL |
+|     NULL |
+|     NULL |
+|     NULL |
+|  1500.00 |
+|     NULL |
+|     NULL |
+|     NULL |
+|     NULL |
++----------+
+14 rows in set (0.00 sec)
+
+mysql> select sal+ ifnull(comm,0) from emp;
++---------------------+
+| sal+ ifnull(comm,0) |
++---------------------+
+|              800.00 |
+|             1900.00 |
+|             1750.00 |
+|             2975.00 |
+|             2650.00 |
+|             2850.00 |
+|             2450.00 |
+|             3000.00 |
+|             5000.00 |
+|             1500.00 |
+|             1100.00 |
+|              950.00 |
+|             3000.00 |
+|             1300.00 |
++---------------------+
+14 rows in set (0.00 sec)
+
+mysql> select ifnull(sal,0) + ifnull(comm,0) from emp;
++--------------------------------+
+| ifnull(sal,0) + ifnull(comm,0) |
++--------------------------------+
+|                         800.00 |
+|                        1900.00 |
+|                        1750.00 |
+|                        2975.00 |
+|                        2650.00 |
+|                        2850.00 |
+|                        2450.00 |
+|                        3000.00 |
+|                        5000.00 |
+|                        1500.00 |
+|                        1100.00 |
+|                         950.00 |
+|                        3000.00 |
+|                        1300.00 |
++--------------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select greatest(sal,3000) from emp;
++--------------------+
+| greatest(sal,3000) |
++--------------------+
+|            3000.00 |
+|            3000.00 |
+|            3000.00 |
+|            3000.00 |
+|            3000.00 |
+|            3000.00 |
+|            3000.00 |
+|            3000.00 |
+|            5000.00 |
+|            3000.00 |
+|            3000.00 |
+|            3000.00 |
+|            3000.00 |
+|            3000.00 |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> select greatest(sal,2000) from emp;
++--------------------+
+| greatest(sal,2000) |
++--------------------+
+|            2000.00 |
+|            2000.00 |
+|            2000.00 |
+|            2975.00 |
+|            2000.00 |
+|            2850.00 |
+|            2450.00 |
+|            3000.00 |
+|            5000.00 |
+|            2000.00 |
+|            2000.00 |
+|            2000.00 |
+|            3000.00 |
+|            2000.00 |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> select greatest(sal,5000) from emp;
++--------------------+
+| greatest(sal,5000) |
++--------------------+
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
+|            5000.00 |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> select greatest(sal,1000) from emp;
++--------------------+
+| greatest(sal,1000) |
++--------------------+
+|            1000.00 |
+|            1600.00 |
+|            1250.00 |
+|            2975.00 |
+|            1250.00 |
+|            2850.00 |
+|            2450.00 |
+|            3000.00 |
+|            5000.00 |
+|            1500.00 |
+|            1100.00 |
+|            1000.00 |
+|            3000.00 |
+|            1300.00 |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> select greatest(sal,6000) from emp;
++--------------------+
+| greatest(sal,6000) |
++--------------------+
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
+|            6000.00 |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> select greatest(sal*0.1,300) from emp;
++-----------------------+
+| greatest(sal*0.1,300) |
++-----------------------+
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               500.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
++-----------------------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select greatest(sal*0.1,300) from emp;
++-----------------------+
+| greatest(sal*0.1,300) |
++-----------------------+
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               500.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
+|               300.000 |
++-----------------------+
+14 rows in set (0.00 sec)
+
+mysql> select least(sal,3000) from emp;
++-----------------+
+| least(sal,3000) |
++-----------------+
+|          800.00 |
+|         1600.00 |
+|         1250.00 |
+|         2975.00 |
+|         1250.00 |
+|         2850.00 |
+|         2450.00 |
+|         3000.00 |
+|         3000.00 |
+|         1500.00 |
+|         1100.00 |
+|          950.00 |
+|         3000.00 |
+|         1300.00 |
++-----------------+
+14 rows in set (0.00 sec)
+
+mysql> CREATE TABLE emp (
+    ->   empno decimal(4,0) NOT NULL,
+    ->   ename varchar(10) default NULL,
+    ->   job varchar(9) default NULL,
+    ->   mgr decimal(4,0) default NULL,
+    ->   hiredate date default NULL,
+    ->   sal decimal(7,2) default NULL,
+    ->   comm decimal(7,2) default NULL,
+    ->   deptno decimal(2,0) default NULL
+    -> quit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'quit' at line 10
+mysql> CREATE TABLE emp1 (
+    ->  sal decimal(7,2) default NULL,
+    -> deptno decimal(2,0) default NULL);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from emp1;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO emp1 VALUES ('1000.00','10');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp1 VALUES ('2000.00','20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp1 VALUES ('3000.00','30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp1;
++---------+--------+
+| sal     | deptno |
++---------+--------+
+| 1000.00 |     10 |
+| 2000.00 |     20 |
+| 3000.00 |     30 |
++---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select 
+    -> case
+    -> when deptno =10 then 'Training'
+    -> when deptno =20 then 'Exports'
+    -> when deptno =30 then 'Sales's
+    -> end "DEPTNAME"
+    -> FROM emp1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's
+end "DEPTNAME"
+FROM emp1' at line 5
+mysql> select 
+    -> case
+    -> when deptno =10 then 'Training'
+    -> when deptno =20 then 'Exports'
+    -> when deptno =30 then 'Sales's
+    -> quit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's
+quit' at line 5
+mysql> select 
+    -> case
+    -> when deptno =10 then 'Training'
+    -> when deptno =20 then 'Exports'
+    -> when deptno =30 then 'Sales'
+    -> end "DEPTNAME"
+    -> FROM EMP1;
++----------+
+| DEPTNAME |
++----------+
+| Training |
+| Exports  |
+| Sales    |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno, sal,sa*12 "ANNUAL",
+    -> case
+    -> when deptno =10 then sal*12*0.4
+    -> when deptno =20 then sal*12*0.3
+    -> when deptno =30 then sal*12*0.2
+    -> else sal*12*0.1
+    -> end "HRA"
+    -> from emp
+    -> order by 2;
+ERROR 1054 (42S22): Unknown column 'sa' in 'field list'
+mysql> select deptno, sal,sal*12 "ANNUAL",
+    -> case
+    -> when deptno =10 then sal*12*0.4
+    -> when deptno =20 then sal*12*0.3
+    -> when deptno =30 then sal*12*0.2
+    -> else sal*12*0.1
+    -> end "HRA"
+    -> from emp
+    -> order by 2;
++--------+---------+----------+-----------+
+| deptno | sal     | ANNUAL   | HRA       |
++--------+---------+----------+-----------+
+|     20 |  800.00 |  9600.00 |  2880.000 |
+|     30 |  950.00 | 11400.00 |  2280.000 |
+|     20 | 1100.00 | 13200.00 |  3960.000 |
+|     30 | 1250.00 | 15000.00 |  3000.000 |
+|     30 | 1250.00 | 15000.00 |  3000.000 |
+|     10 | 1300.00 | 15600.00 |  6240.000 |
+|     30 | 1500.00 | 18000.00 |  3600.000 |
+|     30 | 1600.00 | 19200.00 |  3840.000 |
+|     10 | 2450.00 | 29400.00 | 11760.000 |
+|     30 | 2850.00 | 34200.00 |  6840.000 |
+|     20 | 2975.00 | 35700.00 | 10710.000 |
+|     20 | 3000.00 | 36000.00 | 10800.000 |
+|     20 | 3000.00 | 36000.00 | 10800.000 |
+|     10 | 5000.00 | 60000.00 | 24000.000 |
++--------+---------+----------+-----------+
+14 rows in set (0.00 sec)
+
+mysql> select deptno, sal,
+    -> case
+    -> when sign(sal-3000) =1 then 'high income'
+    -> when sign(sal-3000) =-1 then 'low income'
+    -> else 'Middle income'
+    -> end "Remark"
+    -> from emp
+    -> order by 2;
++--------+---------+---------------+
+| deptno | sal     | Remark        |
++--------+---------+---------------+
+|     20 |  800.00 | low income    |
+|     30 |  950.00 | low income    |
+|     20 | 1100.00 | low income    |
+|     30 | 1250.00 | low income    |
+|     30 | 1250.00 | low income    |
+|     10 | 1300.00 | low income    |
+|     30 | 1500.00 | low income    |
+|     30 | 1600.00 | low income    |
+|     10 | 2450.00 | low income    |
+|     30 | 2850.00 | low income    |
+|     20 | 2975.00 | low income    |
+|     20 | 3000.00 | Middle income |
+|     20 | 3000.00 | Middle income |
+|     10 | 5000.00 | high income   |
++--------+---------+---------------+
+14 rows in set (0.00 sec)
+
+mysql> select user () from dual;
++----------------+
+| user ()        |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE Order(
+    -> quit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Order(
+quit' at line 1
+mysql> show character set;
++----------+---------------------------------+---------------------+--------+
+| Charset  | Description                     | Default collation   | Maxlen |
++----------+---------------------------------+---------------------+--------+
+| armscii8 | ARMSCII-8 Armenian              | armscii8_general_ci |      1 |
+| ascii    | US ASCII                        | ascii_general_ci    |      1 |
+| big5     | Big5 Traditional Chinese        | big5_chinese_ci     |      2 |
+| binary   | Binary pseudo charset           | binary              |      1 |
+| cp1250   | Windows Central European        | cp1250_general_ci   |      1 |
+| cp1251   | Windows Cyrillic                | cp1251_general_ci   |      1 |
+| cp1256   | Windows Arabic                  | cp1256_general_ci   |      1 |
+| cp1257   | Windows Baltic                  | cp1257_general_ci   |      1 |
+| cp850    | DOS West European               | cp850_general_ci    |      1 |
+| cp852    | DOS Central European            | cp852_general_ci    |      1 |
+| cp866    | DOS Russian                     | cp866_general_ci    |      1 |
+| cp932    | SJIS for Windows Japanese       | cp932_japanese_ci   |      2 |
+| dec8     | DEC West European               | dec8_swedish_ci     |      1 |
+| eucjpms  | UJIS for Windows Japanese       | eucjpms_japanese_ci |      3 |
+| euckr    | EUC-KR Korean                   | euckr_korean_ci     |      2 |
+| gb18030  | China National Standard GB18030 | gb18030_chinese_ci  |      4 |
+| gb2312   | GB2312 Simplified Chinese       | gb2312_chinese_ci   |      2 |
+| gbk      | GBK Simplified Chinese          | gbk_chinese_ci      |      2 |
+| geostd8  | GEOSTD8 Georgian                | geostd8_general_ci  |      1 |
+| greek    | ISO 8859-7 Greek                | greek_general_ci    |      1 |
+| hebrew   | ISO 8859-8 Hebrew               | hebrew_general_ci   |      1 |
+| hp8      | HP West European                | hp8_english_ci      |      1 |
+| keybcs2  | DOS Kamenicky Czech-Slovak      | keybcs2_general_ci  |      1 |
+| koi8r    | KOI8-R Relcom Russian           | koi8r_general_ci    |      1 |
+| koi8u    | KOI8-U Ukrainian                | koi8u_general_ci    |      1 |
+| latin1   | cp1252 West European            | latin1_swedish_ci   |      1 |
+| latin2   | ISO 8859-2 Central European     | latin2_general_ci   |      1 |
+| latin5   | ISO 8859-9 Turkish              | latin5_turkish_ci   |      1 |
+| latin7   | ISO 8859-13 Baltic              | latin7_general_ci   |      1 |
+| macce    | Mac Central European            | macce_general_ci    |      1 |
+| macroman | Mac West European               | macroman_general_ci |      1 |
+| sjis     | Shift-JIS Japanese              | sjis_japanese_ci    |      2 |
+| swe7     | 7bit Swedish                    | swe7_swedish_ci     |      1 |
+| tis620   | TIS620 Thai                     | tis620_thai_ci      |      1 |
+| ucs2     | UCS-2 Unicode                   | ucs2_general_ci     |      2 |
+| ujis     | EUC-JP Japanese                 | ujis_japanese_ci    |      3 |
+| utf16    | UTF-16 Unicode                  | utf16_general_ci    |      4 |
+| utf16le  | UTF-16LE Unicode                | utf16le_general_ci  |      4 |
+| utf32    | UTF-32 Unicode                  | utf32_general_ci    |      4 |
+| utf8mb3  | UTF-8 Unicode                   | utf8mb3_general_ci  |      3 |
+| utf8mb4  | UTF-8 Unicode                   | utf8mb4_0900_ai_ci  |      4 |
++----------+---------------------------------+---------------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> Terminal close -- exit!

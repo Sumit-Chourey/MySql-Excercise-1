@@ -1,0 +1,346 @@
+mysql> system cls
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| advanced1          |
+| ankita             |
+| assignment         |
+| assignment_sql1    |
+| cardinfo           |
+| cdac               |
+| customer           |
+| db1                |
+| dbms               |
+| dbmsd3             |
+| dept               |
+| devansh            |
+| emp                |
+| information_schema |
+| jadvance           |
+| jdbc               |
+| myschool           |
+| mysql              |
+| performance_schema |
+| pulkit             |
+| sakila             |
+| sameer             |
+| self               |
+| sky                |
+| student3           |
+| sumit              |
+| sys                |
+| wing               |
+| world              |
++--------------------+
+29 rows in set (0.00 sec)
+
+mysql> use sameer
+Database changed
+mysql> select * from emp;
++-------+-------+------+--------+------------+
+| empno | ename | sal  | city   | dob        |
++-------+-------+------+--------+------------+
+| 1     | Amit  | 5000 | Mumbai | 1995-05-04 |
+| 2     | King  | 6000 | Delhi  | 1990-04-17 |
+| 3     | NULL  | 7000 | NULL   | NULL       |
+| 4     | Atul  | NULL | NULL   | NULL       |
+| 5     | NULL  | 5500 | NULL   | NULL       |
++-------+-------+------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> drop database sameer;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| advanced1          |
+| ankita             |
+| assignment         |
+| assignment_sql1    |
+| cardinfo           |
+| cdac               |
+| customer           |
+| db1                |
+| dbms               |
+| dbmsd3             |
+| dept               |
+| devansh            |
+| emp                |
+| information_schema |
+| jadvance           |
+| jdbc               |
+| myschool           |
+| mysql              |
+| performance_schema |
+| pulkit             |
+| sakila             |
+| self               |
+| sky                |
+| student3           |
+| sumit              |
+| sys                |
+| wing               |
+| world              |
++--------------------+
+28 rows in set (0.00 sec)
+
+mysql> create database databasetechnology;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use create database databasetechnology;
+ERROR 1049 (42000): Unknown database 'create'
+mysql> use database create database databasetechnology;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> use databasetechnology;
+Database changed
+mysql> create table SEMP(
+    -> EMPNO CHAR(4),
+    -> EMPNAME CHAR(20),
+    -> BASIC FLOAT,
+    -> DEPTNO CHAR(2),
+    -> DEPTHEAD(4));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(4))' at line 6
+mysql> create table SEMP(
+    -> EMPNO CHAR(4),
+    -> EMPNAME CHAR(20),
+    -> BASIC FLOAT,
+    -> DEPTNO CHAR(2),
+    -> DEPTHEAD(4)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(4)
+)' at line 6
+mysql> create table SEMP(
+    -> EMPNO CHAR(4),
+    -> EMPNAME CHAR(20),
+    -> BASIC FLOAT,
+    -> DEPTNO CHAR(2),
+    -> DEPTHEAD CHAR(4));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO SEMP VALUES(0001,'SUNIL',6000,10), 
+    -> (0002,'HIREN',8000,20), 
+    -> ; 
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> INSERT INTO SEMP VALUES(0001,'SUNIL',6000,10);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO SEMP(EMPNO , EMPNAME,BASIC,DEPTNO ) VALUES(0001,'SUNIL',6000,10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO SEMP(EMPNO , EMPNAME,BASIC,DEPTNO ) VALUES(0002,'HIREN',8000,20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO SEMP(EMPNO , EMPNAME,BASIC,DEPTNO, DEPTHEAD ) VALUES(0003,'ALI',4000,10,001);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO SEMP(EMPNO , EMPNAME,BASIC,DEPTNO, DEPTHEAD ) VALUES(0003,'ALI',4000,10,0001);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> DROP TABLE SEMP;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table SEMP(
+    -> EMPNO CHAR(4),
+    -> EMPNAME CHAR(20),
+    -> BASIC FLOAT,
+    -> DEPTNO CHAR(2),
+    -> DEPTHEAD CHAR(4));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO SEMP VALUES('0001','SUNIL',6000,'10',NULL), 
+    -> ('0002','HIREN',8000,'20',NULL), 
+    -> ('0003','ALI',4000,'10','0001'),
+    -> ('0004','GEORGE',6000,NULL,'0002');
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM SEMP;
++-------+---------+-------+--------+----------+
+| EMPNO | EMPNAME | BASIC | DEPTNO | DEPTHEAD |
++-------+---------+-------+--------+----------+
+| 0001  | SUNIL   |  6000 | 10     | NULL     |
+| 0002  | HIREN   |  8000 | 20     | NULL     |
+| 0003  | ALI     |  4000 | 10     | 0001     |
+| 0004  | GEORGE  |  6000 | NULL   | 0002     |
++-------+---------+-------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE TABLE SDEPT(
+    -> DEPTNO CHAR(2),
+    -> DEPTNAME CHAR(15));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO SDEPT VALUES('10' 'Development'),
+    -> ('20' 'Tarining');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO SDEPT VALUES('10' 'Development'),
+    -> quit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'quit' at line 2
+mysql> INSERT INTO SDEPT VALUES('10', 'Development'),
+    -> ('20', 'Tarining');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM SDEPT;
++--------+-------------+
+| DEPTNO | DEPTNAME    |
++--------+-------------+
+| 10     | Development |
+| 20     | Tarining    |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> SYSTEM CLS
+mysql> CREATE TABLE SUPPLIER(
+    -> SNO CHAR(3),
+    -> SNAME CHAR(10),
+    -> SNO CHAR(3),
+    -> QUIT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5
+mysql> CREATE TABLE SUPPLIER(
+    -> `S` CHAR(2),
+    -> SNAME CHAR(10),
+    -> STATUS CHAR(10),
+    -> STATUS CHAR(10),
+    -> QUIT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6
+mysql> CREATE TABLE SUPPLIER(
+    -> `S#` CHAR(2),
+    -> SNAME CHAR(10),
+    -> STATUS CHAR(10),
+    -> CITY CHAR(10),));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '))' at line 5
+mysql> CREATE TABLE SUPPLIER(
+    -> `S#` CHAR(2),
+    -> SNAME CHAR(10),
+    -> STATUS CHAR(10),
+    -> CITY CHAR(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM SUPPLIER;
+Empty set (0.00 sec)
+
+mysql> DROP TABLE SUPPLIER;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE TABLE SUPPLIER(
+    -> `S#` CHAR(2),
+    -> SNAME CHAR(10),
+    -> STATUS INT,
+    -> CITY CHAR(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO SUPPLIER VALUES('S1' ,'TATA',10,'BHOPAL'),
+    -> ('S2' ,'HONDA',25,'PUNE'),
+    -> ('S3' ,'HERO',35,'DELHI'),
+    -> ('S4' ,'BAJAJ',15,'INDORE'),
+    -> ('S5' ,'YAMAHA',30,'NAGPUR');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE PARTS(
+    -> `P#` CHAR(2),
+    -> PNAME CHAR(10),
+    -> COLOR CHAR(10),
+    -> WEIGHT FLOAT,
+    -> CITY CHAR(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO PARTS VALUES('P1' ,'TATA','BLACK',12,'BHOPAL'),
+    -> ('P2' ,'HONDA','RED',15,'INDORE'),
+    -> ('P3' ,'WHITE','YELLOW',13,'PUNE'),
+    -> QUIT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'QUIT' at line 4
+mysql> INSERT INTO PARTS VALUES('P1' ,'TATA','BLACK',12,'BHOPAL'),
+    -> ('P2' ,'HONDA','RED',15,'INDORE'),
+    -> ('P3' ,'HERO','YELLOW',13,'PUNE'),
+    -> ('P4' ,'BAJAJ','BLUE',11,'NAGPUR');
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE PROJECTS(
+    -> `J#` CHAR(2),
+    -> JNAME CHAR(10),
+    -> CITY CHAR(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO PROJECTS VALUES('J1' ,'TATA','BHOPAL'),
+    -> ('J2' ,'HONDA','INDORE'),
+    -> ('J3' ,'HERO','PUNE'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 3
+mysql> INSERT INTO PROJECTS VALUES('J1' ,'TATA','BHOPAL'),
+    -> ('J2' ,'HONDA','INDORE'),
+    -> ('J3' ,'HERO','PUNE');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE SPJ(
+    -> `S#` CHAR(2),
+    -> `P#` CHAR(2),
+    -> `J#` CHAR(2),
+    -> QTY INT);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO SPJ VALUES('SS1','SS2','SS3',10),
+    -> ('PP1','PP2','PP3',20),
+    -> ('JJ1','JJ2','JJ3',30);
+ERROR 1406 (22001): Data too long for column 'S#' at row 1
+mysql> INSERT INTO SPJ VALUES('A1','B2','C3',10),
+    -> ('P1','Q2','R3',20),
+    -> ('X1','Y2','Z3',30);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM SUPPLIER;
++------+--------+--------+--------+
+| S#   | SNAME  | STATUS | CITY   |
++------+--------+--------+--------+
+| S1   | TATA   |     10 | BHOPAL |
+| S2   | HONDA  |     25 | PUNE   |
+| S3   | HERO   |     35 | DELHI  |
+| S4   | BAJAJ  |     15 | INDORE |
+| S5   | YAMAHA |     30 | NAGPUR |
++------+--------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT `S#` FROM SUPPLIER
+    -> ;
++------+
+| S#   |
++------+
+| S1   |
+| S2   |
+| S3   |
+| S4   |
+| S5   |
++------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT `S#`,SNAME FROM SUPPLIER;
++------+--------+
+| S#   | SNAME  |
++------+--------+
+| S1   | TATA   |
+| S2   | HONDA  |
+| S3   | HERO   |
+| S4   | BAJAJ  |
+| S5   | YAMAHA |
++------+--------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT PNAME,COLOUR FROM PARTS;
+ERROR 1054 (42S22): Unknown column 'COLOUR' in 'field list'
+mysql> SELECT PNAME,COLOR FROM PARTS;
++-------+--------+
+| PNAME | COLOR  |
++-------+--------+
+| TATA  | BLACK  |
+| HONDA | RED    |
+| HERO  | YELLOW |
+| BAJAJ | BLUE   |
++-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> Terminal close -- exit!
